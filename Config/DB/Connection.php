@@ -19,9 +19,8 @@
           self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$instance;
-
       }catch(Exception $e){
-        return [false, $e->getMessage()];
+        return ($e->getMessage());
       }
     }
   }

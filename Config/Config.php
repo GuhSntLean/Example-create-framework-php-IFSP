@@ -1,10 +1,8 @@
 <?
   
-  namespace config\DB ;
+  namespace Config ;
 
-  echo 'Configuration DataBase';
-
-  const BASEDIR = ''; 
+  const BASEDIR = '/var/www/html/MVC-Project/'; 
 
   const DBTYPE = '';
   const DBUSER = '';
