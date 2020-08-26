@@ -1,5 +1,0 @@
-<?php
-
-  $rotas = [];
-
-  return $rotas;
