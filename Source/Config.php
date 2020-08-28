@@ -1,15 +1,22 @@
 <?php
+/*
 
-// Definição de banco de dados;
-// MySql = mysql
-// Postgresql = pgsql
-// SqlServer = sqlsrv
+  Definição de banco de dados;
+    - MySql = mysql
+    - Postgresql = pgsql
+    - SqlServer = sqlsrv
 
-define("DATA_BASE" , [
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'port' => '3306',
-        'dbname' => 'datalayer_example',
-        'username' => 'root',
-        'passwd' => ''
-      ]);
+*/
+
+  const DATA_BASE = [
+        'driver'    => 'mysql',
+        'host'      => 'localhost',
+        'port'      => '3306',
+        'db_name'   => 'projeto',
+        'user'      => 'root',
+        'password'  => '',
+        'data_mode' => [
+          PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION,
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+        ]
+  ];

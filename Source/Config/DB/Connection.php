@@ -6,22 +6,30 @@
   use Exception;
   use PDOException;
 
-  class Connection{
+  abstract class Connection{
 
+    /** @var PDO */
     private static $instance = null;
 
+    /** @var  PROException */
     private static $error = null;
 
     private function __construct(){}
     private function __clone(){}
 
-    public static function getInstance(){
+    /** @return PDO */
+    public static function getInstance(): ?PDO{
       if(is_null(self::$instance)){
         try{
+
           $instance = new PDO(
-            'mysql'.':host='.'127.0.0.1'.';port=3306'.';dbname=mysql'
+            DATA_BASE['driver'].':host='.DATA_BASE['drive'].';port='.DATA_BASE['port'].';dbname='.DATA_BASE['db_name'],
+            DATA_BASE['user'],
+            DATA_BASE['password']
           );
-          $instance = setAttribute();
+
+          $instance = setAttribute(DATA_BASE['data_mode']);
+        
         }catch(PDOException $error){
           self::$error = $error;
         }catch(Exception $error){
