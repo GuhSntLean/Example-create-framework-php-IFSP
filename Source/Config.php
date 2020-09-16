@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Config;
+
+
+
 /*
 
   Definição de banco de dados;
@@ -7,7 +12,6 @@
     - SqlServer = sqlsrv
 
 */
-
   const DATA_BASE = [
         'driver'    => 'mysql',
         'host'      => 'localhost',

@@ -8,10 +8,10 @@
 
   abstract class Connection{
 
-    /** @var PDO */
+    /** @var PDO|null Retorna um objeto de conexão com o banco de dados*/
     private static $instance = null;
 
-    /** @var  PROException */
+    /** @var  PROException|null Em caso de erro ao conectar com o banco de dados */
     private static $error = null;
 
     private function __construct(){}

@@ -4,10 +4,13 @@
     /** Nome da tabela */
     protected $table;
 
-    /** Colunas desejadas */
+    /** @var array Colunas desejadas */
     protected $columns;
 
-    /** Chave primaria */
+    /** @var array Colunas required */
+    protected $required;
+
+    /** @var array Chave primaria */
     protected $primary;
 
     /** Select se precisar de ByOrder */
@@ -15,6 +18,10 @@
     
     /** Condicional */
     protected $terms;
+
+    public function __construct(){
+
+    }
 
     public function create(): bool{
       
