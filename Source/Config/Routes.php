@@ -8,18 +8,33 @@ abstract class Routes{
    */
   private $routes = [];
 
-  protected function listRoutes(){
+  /**
+   * @var string
+   */
+  private $defaultRoute;
+
+  protected function listRoutes():array{
     
     /**
-     * Tem que se seguir exemplos de rotas para que não 
-     * tenha problema com a rota chamda de rota
-     * $routes[rota-desejada] = 'controller@metodo';
+     * Tem que sempre seguir exemplos de rotas para que haja
+     * problema com a suas chamadas na aplicacao.
+     * Evite colocar nome de todas iguais, sempre verifique 
+     * os controller que serão usados.
      */
 
-    $this->routes[''] = 'HomeController@index';
+    $this->routes[''] = 'HomeController@teste';
     $this->routes['/'] = 'HomeController@teste';
 
     return $this->routes;
+  }
+
+  /**
+   * Ao adicionar o sempre o Controller se 
+   * ele é existente e seu metodo para que não haja erro
+   */
+  protected function defaultParent():string{
+    $this->defaultRoute = 'HomeController@index';
+    return $this->defaultRoute;
   }
 
 }

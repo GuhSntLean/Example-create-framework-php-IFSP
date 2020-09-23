@@ -4,8 +4,8 @@ namespace Source\View;
 
 class View{
 
-  private $header = '';
-  private $footer = '';
+  private $header = __DIR__.'';
+  private $footer = __DIR__.'';
   private $path;
 
   public function render($view, $data = null){

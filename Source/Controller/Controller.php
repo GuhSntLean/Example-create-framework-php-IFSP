@@ -22,17 +22,14 @@
      * Caso a rota não exista sera uma rota default para erros
      * @var string
      */
-    private $defaultRouter = 'home';
+    private $defaultRouter;
 
     public function __construct(){
       $this->routes = parent::listRoutes();
+      $this->defaultRouter = parent::defaultParent();
     }
 
-    public function setRouteDefault($route):void{
-      $this->defaultRouter = $route;
-    }
-
-    public function run(){
+    public function run():void{
       if(isset($_GET['r'])){
         $route = $_GET['r'];
       }else{
@@ -40,28 +37,32 @@
       }
 
       if(array_key_exists($route, $this->routes)){
-        $route = $this->routes;
+        $route = $this->routes[$r];
         $this->callController($route);
+      }elseif($this->defaultRouter != NULL){
+        $this->callController($this->defaultRouter);
       }else{
         echo 'Rota invalida';
       }
-
     }
-
+    
+    // TODO: Colocar verificardor de objeto e metodos(Imbutido diretamente no metodo)
     private function callController($route){
-      $route = explode;
+      $route = explode('@', $route);
+
       $controller = $route[0];
       $method = $route[1];
+      
       if(isset($_GET['id'])){
         $id = $_GET['id'];
       }else{
         $id = null;
       }
 
-      $controller = 'Controller\\' . $controller;
+      $controller = 'App\\Controller\\' . $controller;
 
       $objController = new $controller;
 
-      $objController->method($id);
+      $objController->$method($id);
     }
   }
