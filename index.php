@@ -1,12 +1,12 @@
-<?php 
+<?php
 
+require_once ('autoload.php');
 
-  use Symfony\Component\Dotenv\Dotenv;
+use \Source\Controller\Controller;
 
-  require __DIR__ . '/vendor/autoload.php';
-  
-  $dotenv = new Dotenv();
-  $dotenv->load(__DIR__.'/.env');
+// var_dump(new \Source\Controller\Controller());
 
-  var_dump($_ENV['PORT']);
-  // var_dump(getenv('PORT'));
+$app = new Controller();
+
+// $app->setRoutes(require('../route/routes.php'));
+// $app->run();

@@ -32,8 +32,6 @@
         
         }catch(PDOException $error){
           self::$error = $error;
-        }catch(Exception $error){
-          self::$error = $error;
         }
       }
       return self::$instance;
@@ -41,6 +39,14 @@
 
     public static function error(){
       return self::$error;
+    }
+
+    protected function testConnection(): boolval{
+      if($this->getInstance()==PDO){
+        return true;
+      }else{
+        return false;
+      }
     }
 
   }

@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Config;
+namespace Source\Config;
 
-
+use PDO;
 
 /*
-
   Definição de banco de dados;
     - MySql = mysql
     - Postgresql = pgsql
     - SqlServer = sqlsrv
-
 */
   const DATA_BASE = [
         'driver'    => 'mysql',
