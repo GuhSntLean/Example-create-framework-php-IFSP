@@ -14,9 +14,7 @@ spl_autoload_register(function($class){
   $relative_class = substr($class, $len);
 
   $file = $base_dir.str_replace('\\', '/', $relative_class) . '.php';
-  echo'<pre>';
-    var_dump($file);
-  echo '</pre>';
+  
   if(file_exists($file)){
     require $file;
   }else{
