@@ -1,12 +1,14 @@
 <?php
 
-  namespace Source\Config\DB;
+  namespace Source\DB;
 
   use PDO;
   use Exception;
   use PDOException;
+  use Source\Config\Config;
+  
+  class Connection{
 
-  abstract class Connection{
 
     /** @var PDO|null Retorna um objeto de conexão com o banco de dados*/
     private static $instance = null;
@@ -19,16 +21,17 @@
 
     /** @return PDO */
     public static function getInstance(): ?PDO{
+      $data_config = Config::getConfig();
       if(is_null(self::$instance)){
         try{
 
           $instance = new PDO(
-            DATA_BASE['driver'].':host='.DATA_BASE['drive'].';port='.DATA_BASE['port'].';dbname='.DATA_BASE['db_name'],
-            DATA_BASE['user'],
-            DATA_BASE['password']
+            $data_config['driver'].':host='.$data_config['drive'].';port='.$data_config['port'].';dbname='.$data_config['db_name'],
+            $data_config['user'],
+            $data_config['password']
           );
 
-          $instance = setAttribute(DATA_BASE['data_mode']);
+          $instance = setAttribute($data_config['data_mode']);
         
         }catch(PDOException $error){
           self::$error = $error;
@@ -40,13 +43,4 @@
     public static function error(){
       return self::$error;
     }
-
-    protected function testConnection(): boolval{
-      if($this->getInstance()==PDO){
-        return true;
-      }else{
-        return false;
-      }
-    }
-
   }

@@ -10,15 +10,27 @@ use PDO;
     - Postgresql = pgsql
     - SqlServer = sqlsrv
 */
-  const DATA_BASE = [
-        'driver'    => 'mysql',
-        'host'      => 'localhost',
-        'port'      => '3306',
-        'db_name'   => 'projeto',
-        'user'      => 'root',
-        'password'  => '',
-        'data_mode' => [
-          PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION,
-          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
-        ]
-  ];
+class Config{
+
+  /**
+   * @var array
+   */
+  private static $dataConfig;
+
+  public function getConfig():array{
+    Config::$dataConfig = [
+      'driver'    => 'mysql',
+      'host'      => 'localhost',
+      'port'      => '3306',
+      'db_name'   => 'projeto',
+      'user'      => 'root',
+      'password'  => 'MySql2020!',
+      'data_mode' => [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+      ]
+    ];
+
+    return Config::$dataConfig;
+  }
+}
