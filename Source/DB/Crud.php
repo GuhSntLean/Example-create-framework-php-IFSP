@@ -7,10 +7,6 @@
 
   trait Crud{
 
-    protected function abrir(){
-      echo 'abrir';
-    }
-
     /**
      * @param array $data
      * @return int|null

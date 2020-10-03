@@ -13,7 +13,6 @@
 
     public function index(){
       $this->view->render('home/index');
-      // echo 'teste';
     }
 
     public function teste(){
