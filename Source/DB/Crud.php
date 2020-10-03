@@ -23,31 +23,55 @@
        return Connect::getInstance()->lastInsertId();
 
      }catch(PDOException $e){
-
        $this->error = $e;
        return null;
-
      }
    } 
 
-   protected function update(){
-
-   }
-
-   protected function delete(): bool{
+   protected function update(array $data, string $terms, string $params){
     try{
+      $dataSet = [];
+      foreach($data as $bind => $value){
+        $dataSet[] = "{$bind} = :{$bind}";
+      }
 
-      return true;
+      $dataSet = implode(", ", $dataSet);
+      parse_str($params, $params);
 
-    }catch(PDOException $e){
-
-      $this->error = $e;
-      return false;
-
+      $stmt = Connection::getInstance()->prepare("UPDATE {$this->entity} SET {$dateSet} WHERE {$terms}");
+      $stmt->execute($this->filter(array_merge($data, $params)));
+            
+      return ($stmt->rowCount() ?? 1);
+    }catch(PDOException $exception) {
+      $this->error = $exception;
+      return null;
     }
    }
 
+
+
+   protected function delete(): bool{
+      try {
+            $stmt = Connect::getInstance()->prepare("DELETE FROM {$this->entity} WHERE {$terms}");
+            if ($params) {
+                parse_str($params, $params);
+                $stmt->execute($params);
+                return true;
+            }
+
+            $stmt->execute();
+            return true;
+      } catch (PDOException $exception) {
+            $this->fail = $exception;
+            return false;
+      }
+   }
+
    protected function filter(){
-     
+      $filter = [];
+      foreach ($data as $key => $value) {
+          $filter[$key] = (is_null($value) ? null : filter_var($value, FILTER_DEFAULT));
+      }
+      return $filter;
    }
   }
