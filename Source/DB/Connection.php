@@ -25,16 +25,20 @@
       if(is_null(self::$instance)){
         try{
 
-          $instance = new PDO(
-            $data_config['driver'].':host='.$data_config['drive'].';port='.$data_config['port'].';dbname='.$data_config['db_name'],
+          self::$instance = new PDO(
+            $data_config['driver'].':host='.$data_config['host'].';port='.$data_config['port'].';dbname='.$data_config['db_name'],
             $data_config['user'],
             $data_config['password']
           );
 
-          $instance = setAttribute($data_config['data_mode']);
+          
         
+          self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
         }catch(PDOException $error){
           self::$error = $error;
+          var_dump(self::$error);
         }
       }
       return self::$instance;

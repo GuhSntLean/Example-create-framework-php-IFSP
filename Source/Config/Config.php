@@ -20,7 +20,7 @@ class Config{
   public function getConfig():array{
     Config::$dataConfig = [
       'driver'    => 'mysql',
-      'host'      => 'localhost',
+      'host'      => 'database',
       'port'      => '3306',
       'db_name'   => 'projeto',
       'user'      => 'root',
@@ -31,6 +31,6 @@ class Config{
       ]
     ];
 
-    return Config::$dataConfig;
+    return self::$dataConfig;
   }
 }
