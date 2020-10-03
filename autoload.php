@@ -18,7 +18,7 @@ spl_autoload_register(function($class){
   if(file_exists($file)){
     require $file;
   }else{
-    echo "erro ao carregar";
+    echo ('erro ao carregar');
   }
 
 });

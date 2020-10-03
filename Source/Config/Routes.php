@@ -21,9 +21,10 @@ abstract class Routes{
      * Evite colocar nome de todas iguais, sempre verifique 
      * os controller que serão usados.
      */
-
-    $this->routes[''] = 'HomeController@teste';
-    $this->routes['/'] = 'HomeController@teste';
+    
+    $this->routes['newuser']      = 'DataUserController@newUser';
+    $this->routes['createuser']   = 'DataUserController@createNewUser';
+    $this->routes['/']            = 'HomeController@index';
 
     return $this->routes;
   }

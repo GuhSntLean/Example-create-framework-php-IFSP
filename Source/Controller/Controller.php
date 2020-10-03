@@ -29,15 +29,14 @@
       $this->defaultRouter = parent::defaultParent();
     }
 
-    public function run():void{
+    public function run(){
       if(isset($_GET['r'])){
         $route = $_GET['r'];
       }else{
         $route = $this->defaultRouter;
-      }
-
+      } 
       if(array_key_exists($route, $this->routes)){
-        $route = $this->routes[$r];
+        $route = $this->routes[$route];
         $this->callController($route);
       }elseif($this->defaultRouter != NULL){
         $this->callController($this->defaultRouter);
