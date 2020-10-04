@@ -40,7 +40,6 @@
       parse_str($params, $params);
       
       $stmt = Connection::getInstance()->prepare("UPDATE {$this->entity} SET {$dataSet} WHERE {$terms}");
-      var_dump($stmt);
       $stmt->execute($this->filter(array_merge($data, $params)));
             
       return ($stmt->rowCount() ?? 1);

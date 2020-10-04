@@ -22,10 +22,9 @@
       $validation = $this->find('userName = :userName', "userName={$userName}")->fetch(true);
       if($validation != NULL){
         if($validation[0]->userName == $userName && $validation[0]->pass == $pass){
-          return true;
+          return $validation[0];
         }
       }
-      return false;
-
+      return NULL;
     }
   }

@@ -22,6 +22,9 @@ abstract class Routes{
      * os controller que serão usados.
      */
     
+    /** Rotas das infomações do TODO */
+    $this->routes['editTask']    = 'TaskController@editTask';
+
      /** Rotas para login e logout */
     $this->routes['login']       = 'HomeController@login';
     

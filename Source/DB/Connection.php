@@ -38,7 +38,6 @@
 
         }catch(PDOException $error){
           self::$error = $error;
-          var_dump(self::$error);
         }
       }
       return self::$instance;

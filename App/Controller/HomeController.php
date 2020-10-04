@@ -2,6 +2,8 @@
   namespace App\Controller;
 
   use App\Controller\LoginController;
+  use App\Controller\TaskController;
+
   use App\Model\DataUser;
 
   use Source\View\View;
@@ -11,10 +13,12 @@
 
     private $view;
     private $dataUser;
+    private $task;
 
     public function __construct(){
       $this->dataUser = new DataUser();
       $this->view =  new View();
+      $this->task = new TaskController();
     }
 
     public function index(){
@@ -31,8 +35,13 @@
       }else{
         $userName  = $_POST['nameUser'];
         $pass      = $_POST['pass'];
-        if($this->dataUser->loginIn($userName, $pass)){
-          $this->view->render('home/home');
+        $datauser = $this->dataUser->loginIn($userName, $pass);
+        $this->dataUser = $this->dataUser->loginIn($userName, $pass);
+        if($datauser != NULL){
+          $task = $this->task->index($this->dataUser->id);
+          $data[] = $this->task->index($this->dataUser->id);
+          $data[] = $this->dataUser;
+          $this->view->render('home/home', $data);
         }else{
           $this->view->render('home/login');
         }          

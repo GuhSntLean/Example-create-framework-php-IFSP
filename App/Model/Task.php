@@ -6,6 +6,13 @@
   class Task extends Model{
 
     public function __construct(){
-      parent::__construct("tb_usuarios", ['idDatauser', 'nameTask', 'descricao', 'statusTask']);
+      parent::__construct('tasks', ['idDatauser', 'nameTask', 'descricao', 'statusTask']);
+    }
+
+    public function listTask($id){
+      $this->find('idDatauser = :idDatauser', "idDatauser={$id}");
+      $listtask = $this->fetch(true);
+
+      return $listtask;
     }
   }
