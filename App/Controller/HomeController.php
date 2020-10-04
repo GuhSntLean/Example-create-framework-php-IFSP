@@ -23,7 +23,10 @@
 
     public function index(){
       if(LoginController::isLogado()){
-        $this->view->render('home/home');
+        $user = $_SESSION['usuario'];
+        $data[] = $this->task->index($user->id);
+        $data[] = $_SESSION['usuario'];
+        $this->view->render('home/home', $data);
       }else{
         $this->view->render('home/login');
       }
@@ -41,10 +44,15 @@
           $task = $this->task->index($this->dataUser->id);
           $data[] = $this->task->index($this->dataUser->id);
           $data[] = $this->dataUser;
+          LoginController::login($this->dataUser);
           $this->view->render('home/home', $data);
         }else{
           $this->view->render('home/login');
-        }          
+        }
       }
+    }
+
+    public function logout(){
+      LoginController::logout();
     }
   }

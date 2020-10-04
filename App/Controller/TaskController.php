@@ -44,7 +44,7 @@
 
       $this->task->save();
 
-      // header('Location:?r=home');
+      header('Location:?r=home');
     }
 
     public function editTask($id){
@@ -52,6 +52,19 @@
       $data[] = $tarefa;
       $data[] = $this->defaulsTaks();
       $this->view->render('task/edit',$data);
+    }
+
+    public function deleteTask($id){
+      $this->view->render('task/delete',$id);
+    }
+
+    public function destroyTask($id){
+
+      $this->task =$this->task->findById($id);
+      if($this->task !=NULL){
+        $this->task->destroy();
+      }
+      header('Location:?r=home');
     }
 
 

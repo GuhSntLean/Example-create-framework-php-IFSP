@@ -201,7 +201,6 @@ abstract class Model
             }
 
             if (!empty($this->data->$primary)) {
-                var_dump("aqui");
                 $id = $this->data->$primary;
                 $this->update($this->safe(), "{$this->primary} = :id", "id={$id}");
             }

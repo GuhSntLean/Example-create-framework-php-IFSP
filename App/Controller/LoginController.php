@@ -18,8 +18,14 @@
       return false;
     }
 
-    public function login(){
-      $_SESSION['logado'];
+    public function login($user){
+      if($user != NULL){
+        $_SESSION['logado'] = true;
+        $_SESSION['usuario'] = $user;
+      }else{
+        session_destroy();
+        header('Location:?r=home');
+      }
     }
 
     public function logout(){

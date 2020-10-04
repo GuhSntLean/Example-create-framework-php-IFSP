@@ -27,10 +27,15 @@ abstract class Routes{
     $this->routes['updateTask']  = 'TaskController@updateTask';
 
     $this->routes['newTask']     = 'TaskController@newTask';
-    $this->routes['saveTask']     = 'TaskController@saveTesk';
+    $this->routes['saveTask']    = 'TaskController@saveTesk';
+
+    $this->routes['deleteTask']  = 'TaskController@deleteTask';
+    $this->routes['destroyTask'] = 'TaskController@destroyTask';
 
      /** Rotas para login e logout */
     $this->routes['login']       = 'HomeController@login';
+
+    $this->routes['logout']      = 'HomeController@logout';
     
      /** Dados basico sobre usuario */
     $this->routes['newuser']      = 'DataUserController@newUser';
