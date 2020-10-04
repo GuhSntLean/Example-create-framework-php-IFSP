@@ -17,4 +17,15 @@
         return false;
       }
     }
+
+    public function loginIn($userName, $pass){
+      $validation = $this->find('userName = :userName', "userName={$userName}")->fetch(true);
+      if($validation != NULL){
+        if($validation[0]->userName == $userName && $validation[0]->pass == $pass){
+          return true;
+        }
+      }
+      return false;
+
+    }
   }

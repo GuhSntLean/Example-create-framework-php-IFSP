@@ -5,6 +5,8 @@
 
   use Source\View\View;
   
+  use App\Controller\LoginController;
+
   class DataUserController{
     private $view;
     private $dataUser;
@@ -18,13 +20,21 @@
      * Chamada de tela para cadatro do usuario
      */
     public function newUser(){
-      $this->view->render('dadosuser/create');
+      if(LoginController::isLogado()){
+        $this->view->render('home/login');
+      }else{
+        $this->view->render('dadosuser/create');
+      }
     }
 
     /**
-     * Verificando as informações para adicionar as paginas
+     * Verificando as informações para adicionar o usuario
      */
     public function createNewUser(){
+      if(LoginController::isLogado()){
+        $this->view->render('home/login');
+      }
+
       $username = $_POST['username'];
       $pass     = $_POST['pass'];
       $repass   = $_POST['repeatpass'];

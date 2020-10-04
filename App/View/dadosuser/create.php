@@ -20,7 +20,7 @@
         </div>
       </form>
       <div>
-          <a href='?r=/'> Voltar </a> 
+          <a href='?r=home'> Voltar </a> 
         </div>
     </div>
   </div>

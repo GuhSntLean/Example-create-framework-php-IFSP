@@ -22,9 +22,15 @@ abstract class Routes{
      * os controller que serão usados.
      */
     
+     /** Rotas para login e logout */
+    $this->routes['login']       = 'HomeController@login';
+    
+     /** Dados basico sobre usuario */
     $this->routes['newuser']      = 'DataUserController@newUser';
     $this->routes['createuser']   = 'DataUserController@createNewUser';
-    $this->routes['/']            = 'HomeController@index';
+    
+    /** Rotas de home */
+    $this->routes['home']         = 'HomeController@index';
 
     return $this->routes;
   }
