@@ -26,6 +26,9 @@ abstract class Routes{
     $this->routes['editTask']    = 'TaskController@editTask';
     $this->routes['updateTask']  = 'TaskController@updateTask';
 
+    $this->routes['newTask']     = 'TaskController@newTask';
+    $this->routes['saveTask']     = 'TaskController@saveTesk';
+
      /** Rotas para login e logout */
     $this->routes['login']       = 'HomeController@login';
     

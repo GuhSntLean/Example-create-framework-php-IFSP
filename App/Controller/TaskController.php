@@ -26,12 +26,25 @@
       return false;
     }
 
-    public function newTask(){
+    public function newTask($id){
 
+      $data[] = $id;
+      $data[] = $this->defaulsTaks();
+      $this->view->render('task/create', $data);
     }
 
-    public function saveTesk(){
-      
+    public function saveTesk($id){
+      if(empty($_POST['nameTask']) || empty($_POST['descricao']) || empty($_POST['status'])){
+        $this->newTask($id);
+      }
+      $this->task->idDatauser = $id;
+      $this->task->nameTask = $_POST['nameTask'];
+      $this->task->descricao = $_POST['descricao'];
+      $this->task->statusTask = $_POST['status'];
+
+      $this->task->save();
+
+      // header('Location:?r=home');
     }
 
     public function editTask($id){
@@ -41,9 +54,10 @@
       $this->view->render('task/edit',$data);
     }
 
+
     public function updateTask($id){
-      if(empty($_POST['nameTask']) && empty($_POST['descricao']) && empty($_POST['status']) && empty($_POST['idDatauser'])){
-        header('Location:?r=editTask&id='.$id);
+      if(empty($_POST['nameTask']) || empty($_POST['descricao']) || empty($_POST['status'])){
+        $this->editTask($id);
       }
       $this->task = $this->task->findById($id);
 
@@ -54,10 +68,8 @@
       $this->task->statusTask = $_POST['status'];
 
       $this->task->save();
-      echo'<pre>';
-      var_dump($this->task);
 
-      //header('Location:?r=home');
+      header('Location:?r=home');
     }
 
     public function defaulsTaks(){

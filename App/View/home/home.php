@@ -24,5 +24,5 @@
     </tr>
   <?php endforeach; ?>
 </table>
-<a href="?r=newtarefa" class="btn btn-success">Nova tarefa</a>
+<a href="?r=newTask&id=<?= $user->id ?>" class="btn btn-success">Nova tarefa</a>
 
