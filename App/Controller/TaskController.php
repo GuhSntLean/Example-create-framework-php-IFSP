@@ -26,9 +26,41 @@
       return false;
     }
 
+    public function newTask(){
+
+    }
+
+    public function saveTesk(){
+      
+    }
+
     public function editTask($id){
       $tarefa = $this->task->findById($id);
-      $this->view->render('task/edit',$tarefa);
-      $tarefa;
+      $data[] = $tarefa;
+      $data[] = $this->defaulsTaks();
+      $this->view->render('task/edit',$data);
     }
+
+    public function updateTask($id){
+      if(empty($_POST['nameTask']) && empty($_POST['descricao']) && empty($_POST['status']) && empty($_POST['idDatauser'])){
+        header('Location:?r=editTask&id='.$id);
+      }
+      $this->task = $this->task->findById($id);
+
+      $this->task->id = $id;
+
+      $this->task->nameTask = $_POST['nameTask'];
+      $this->task->descricao = $_POST['descricao'];
+      $this->task->statusTask = $_POST['status'];
+
+      $this->task->save();
+      echo'<pre>';
+      var_dump($this->task);
+
+      //header('Location:?r=home');
+    }
+
+    public function defaulsTaks(){
+      return ["A fazer", "Fazendo", "Feito"];
+    }  
   }
