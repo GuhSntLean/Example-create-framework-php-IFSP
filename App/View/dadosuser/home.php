@@ -8,7 +8,7 @@
         <input type="text" id="login" class="form-control" name="username" value='<?= $data->userName?>'  disabled >
       </div>
       <div>
-        <a class="btn btn-warning" href='?r=home'> Editar </a>
+        <a class="btn btn-warning" href='?r=editUser&id=<?= $data->id?>'> Editar </a>
         <a class="btn btn-danger" href='?r=home'> Voltar </a> 
     </div>
   </div>

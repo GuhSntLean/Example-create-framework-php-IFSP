@@ -60,4 +60,26 @@
     public function infoUser($id){
       $this->dataUser = $this->dataUser->findById($id);
     }
+
+    public function editUser($id){
+      $this->dataUser = $this->dataUser->findById($id);
+      if($this->dataUser == NULL){
+        header('Location:?r=home');
+      }else{
+        $data[] = $this->dataUser ;
+        $this->view->render('dadosuser/create', $data);
+      }
+      
+    }
+
+    public function updateUser($id){
+      $username = $_POST['username'];
+      $pass     = $_POST['pass'];
+      $repass   = $_POST['repeatpass'];
+      if($pass === $repass && strlen($pass) >= 5 || strlen($username) >= 5 || strlen($username) > 5 || isset($username)) {
+        
+      }else{
+         
+      }
+    }
   }

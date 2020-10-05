@@ -25,7 +25,8 @@
           if($verify == NULL){
             header('Location:?r=home');
           }else{
-            $this->view->render('infouser/edit', $verify );
+            $info[] = $verify;
+            $this->view->render('infouser/edit', $info );
           }
         }
     }
@@ -51,7 +52,7 @@
       
       $validation = $this->infoUser->find('idDatauser = :idDatauser', "idDatauser={$id}")->fetch(false);
       if($validation != NULL){
-        $this->infoUser = $validation;
+        $this->infoUser = $this->infoUser->find('idDatauser = :idDatauser', "idDatauser={$id}")->fetch(false);
         $this->infoUser->first_names = $firstName;
         $this->infoUser->last_name = $lastName;
         $this->infoUser->email = $email;
@@ -62,9 +63,11 @@
         $this->infoUser->email = $email;
       }
 
-      $this->infoUser->save();
+       $this->infoUser->save();
 
-      header('Location:?r=home');
+       header('Location:?r=home');
+       
     }
+
 
   }
