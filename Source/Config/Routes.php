@@ -44,6 +44,8 @@ abstract class Routes{
     
     /**Informação do usuario */
     $this->routes['infoUser']     = 'UserInfoController@infoUser';
+    $this->routes['saveInfo']     = 'UserInfoController@saveInfo';
+    $this->routes['editInfo']     = 'UserInfoController@editInfo';
 
     /** Rotas de home */
     $this->routes['home']         = 'HomeController@index';

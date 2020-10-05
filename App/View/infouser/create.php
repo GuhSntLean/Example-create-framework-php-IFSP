@@ -1,7 +1,7 @@
 <div class="content">
   <div class="container clearfix">
     <div class="col-md-5 configdiv">  
-      <form action="?r=" method=POST >
+      <form action="?r=saveInfo&id=<?=$data?>" method=POST >
         <div class="form-label-group">
           <label for="login">Primeiro nome</label>
           <input type="text" id="login" class="form-control" name="firstName" placeholder="Nome">
@@ -19,6 +19,7 @@
 
         <div class="form-label-group">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+          <a class="btn btn-lg btn-primary btn-block" href='?r=home'> Voltar </a> 
         </div>
       </form>
       <div>
