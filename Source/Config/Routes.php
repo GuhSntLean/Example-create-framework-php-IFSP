@@ -40,7 +40,11 @@ abstract class Routes{
      /** Dados basico sobre usuario */
     $this->routes['newuser']      = 'DataUserController@newUser';
     $this->routes['createuser']   = 'DataUserController@createNewUser';
+    $this->routes['dataUser']     = 'DataUserController@dataUser';
     
+    /**Informação do usuario */
+    $this->routes['infoUser']     = 'UserInfoController@infoUser';
+
     /** Rotas de home */
     $this->routes['home']         = 'HomeController@index';
 

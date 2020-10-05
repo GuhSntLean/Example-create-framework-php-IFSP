@@ -21,7 +21,7 @@
      */
     public function newUser(){
       if(LoginController::isLogado()){
-        $this->view->render('home/login');
+        header('Location:?r=home');
       }else{
         $this->view->render('dadosuser/create');
       }
@@ -31,8 +31,8 @@
      * Verificando as informações para adicionar o usuario
      */
     public function createNewUser(){
-      if(LoginController::isLogado()){
-        $this->view->render('home/login');
+      if(!LoginController::isLogado()){
+        $this->view->render('dadosuser/create');
       }
 
       $username = $_POST['username'];
@@ -49,5 +49,15 @@
       }else{
          $this->view->render('dadosuser/create');
       }
+    }
+
+    public function dataUser($id){
+      $this->dataUser =  $this->dataUser->findById($id);
+
+      $this->view->render('dadosuser/home', $this->dataUser);
+    }
+
+    public function infoUser($id){
+      $this->dataUser = $this->dataUser->findById($id);
     }
   }

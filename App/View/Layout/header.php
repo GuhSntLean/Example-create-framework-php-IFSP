@@ -14,10 +14,10 @@
             <a class="nav-link" href="?r=home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Informação do usuario</a>
+            <a class="nav-link" href="?r=infoUser&id=<?=$_SESSION['usuario']->id ?>">Informação do usuario</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Usuario</a>
+            <a class="nav-link" href="?r=dataUser&id=<?=$_SESSION['usuario']->id ?>">Usuario</a>
           </li>
         </ul>
         <div class="form-inline mt-2 mt-md-0">
