@@ -1,4 +1,4 @@
-<p>Editar Tarefa</p>
+<p>Nova Tarefa</p>
 <?php
   $opt = $data[1];
   $id  = $data[0]; 

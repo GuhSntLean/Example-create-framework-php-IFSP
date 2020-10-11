@@ -2,7 +2,7 @@
   $tasks = $data[0];
   $user = $data[1];
 ?>
-
+<div class="form-signin">
 <div class="page-header">
 	<h4>Lista de Tarefas</h4>
 </div>
@@ -26,4 +26,5 @@
 </table>
 
 <a href="?r=newTask&id=<?= $user->id ?>" class="btn btn-success">Nova tarefa</a>
+</div>
 

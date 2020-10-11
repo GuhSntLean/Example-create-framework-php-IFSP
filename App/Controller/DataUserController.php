@@ -67,9 +67,8 @@
         header('Location:?r=home');
       }else{
         $data[] = $this->dataUser ;
-        $this->view->render('dadosuser/create', $data);
+        $this->view->render('dadosuser/edit', $data);
       }
-      
     }
 
     public function updateUser($id){
@@ -77,9 +76,21 @@
       $pass     = $_POST['pass'];
       $repass   = $_POST['repeatpass'];
       if($pass === $repass && strlen($pass) >= 5 || strlen($username) >= 5 || strlen($username) > 5 || isset($username)) {
-        
+        $this->dataUser = $this->dataUser->findById($id);
+        $this->dataUser->userName = $username;
+        $this->dataUser->pass = $pass;
+
+        $validation = $this->find('userName = :userName', "userName={$this->userName}")->fetch(true);
+        if($validation != NULL){
+          if($validation[0]->userName == $this->dataUser->userName){
+            $this->editUser($id);
+          }
+          // $this->dataUser->save();
+          var_dump($this->dataUser);
+        }
+        // header('Location:?r=home');
       }else{
-         
+        //  header('Location:?r=home');
       }
     }
   }

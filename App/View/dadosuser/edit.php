@@ -1,10 +1,11 @@
+
 <div class="content">
   <div class="container clearfix">
     <div class="col-md-5 configdiv">  
       <form action="?r=updateUser&<?= $data[0]->id ?>" method=POST >
         <div class="form-label-group">
           <label for="login">Informe seu nome de usuario</label>
-          <input type="text" id="login" class="form-control" name="username" value="<?= $data[0]->id ?>" >
+          <input type="text" id="login" class="form-control" name="username" value="<?= $data[0]->userName ?>" >
         </div>
         <div class="form-label-group">
           <label for="inputPassword">Senha</label>
